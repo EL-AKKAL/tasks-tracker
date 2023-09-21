@@ -13,6 +13,7 @@
           <div class="input-group">
                <label for="dat">Day and Time</label>
                <input
+                    @keyup.enter="addNewTodo"
                     placeholder="ex : the first of july"
                     v-model="dat"
                     type="text"
@@ -40,11 +41,9 @@ export default {
                     return;
                }
                const newTodo = {
-                    id: Math.floor(Math.random() * 10000),
                     task: this.text,
                     dat: this.dat,
                };
-
                this.text = "";
                this.dat = "";
                this.$emit("listen-new-todo", newTodo);

@@ -38,20 +38,38 @@ export default {
                     this.todos = this.todos.filter((todo) => todo.id != id);
                }
           },
-
-          async fetchTodos() {
-               const response = await fetch("http://localhost:5000/todos");
-               const data = await response.json();
-               return data;
-          },
-          async fetchTodo(id) {
-               const response = await fetch(`api/todos/${id}`);
-               const data = await response.json();
-               return data;
+          addTodo(todo) {
+               this.todos = [...this.todos, todo];
           },
      },
-     async created() {
-          this.todos = await this.fetchTodos();
+     created() {
+          this.todos = [
+               {
+                    id: 1,
+                    task: "visit doctor",
+                    dat: "Next Monday at 7am",
+               },
+               {
+                    id: 2,
+                    task: "football game",
+                    dat: "13 march at 7pm",
+               },
+               {
+                    id: 3,
+                    task: "school exam",
+                    dat: "first of july at 7am",
+               },
+               {
+                    id: 4,
+                    task: "project delivery",
+                    dat: "22 june at 12am",
+               },
+               {
+                    id: 5,
+                    task: "cousin birthday",
+                    dat: "the fifth of august",
+               },
+          ];
      },
 };
 </script>
